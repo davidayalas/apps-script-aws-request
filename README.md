@@ -35,7 +35,7 @@ Originaly forked from [smithy545/aws-apps-scripts](https://github.com/smithy545/
 
 5. Copy you library Script ID from `File → Project properties → Script ID`
 
-6. Use new library with you Script ID in other projects [Use public library](#).
+6. Use new library with you Script ID in other projects [Use public library](#use-public-library).
 
 ### Use in same file with other scripts
 
