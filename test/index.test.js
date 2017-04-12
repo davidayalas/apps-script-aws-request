@@ -1,4 +1,5 @@
 /* global require */
+/* eslint no-global-assign: 0 */
 
 var test = require('tape');
 var lib = require('../_temp-test/aws-request');
@@ -97,10 +98,20 @@ test('getCanonicalRequestHash function', function (t) {
 
 test('request', function (t) {
   var request = lib.request;
-  var UrlFetchApp = lib.UrlFetchApp;
 
   t.ok(lib.HASH_ALGORITHM_, 'should have HASH_ALGORITHM_ constant');
   t.equal(typeof request, 'function', 'should have request function');
+
+  t.end();
+});
+
+test('request #1', function (t) {
+  var request = lib.request;
+  var UrlFetchApp = lib.UrlFetchApp;
+
+  // setup env
+  UrlFetchApp.fetch.reset();
+  lib.testCurrentDate = '2015-08-30T12:36:00Z';
 
   var params = {
     accessKey: 'AKIDEXAMPLE',
@@ -136,6 +147,62 @@ test('request', function (t) {
     method: 'GET',
     muteHttpExceptions: true,
     payload: ''
+  }, 'should request with params');
+
+  t.end();
+});
+
+test('request #2', function (t) {
+  var request = lib.request;
+  var UrlFetchApp = lib.UrlFetchApp;
+
+  // setup env
+  UrlFetchApp.fetch.reset();
+  lib.testCurrentDate = '2017-04-12T17:57:24Z'; //
+
+  var name = 'arn:aws:lambda:eu-west-1:913984845600:function:vensi_warehouse';
+  var event = {
+    type: 'productSlots/append',
+    payload: {
+      code: '1555',
+      slots: ['M1010', 'M1011']
+    }
+  };
+
+  var params = {
+    accessKey: 'AKIDEXAMPLE',
+    secretKey: 'wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY',
+    service: 'lambda',
+    region: 'eu-west-1',
+    path: '/2015-03-31/functions/' + encodeURI(name) + '/invocations',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    payload: event
+  };
+
+  var result = request(params);
+  t.equal(result, 'ok');
+
+  t.ok(UrlFetchApp.fetch.calledOnce, 'should called once');
+
+  t.equal(UrlFetchApp.fetch.firstCall.args[0],
+    'https://lambda.eu-west-1.amazonaws.com/2015-03-31/functions' +
+      '/arn:aws:lambda:eu-west-1:913984845600:function:vensi_warehouse/invocations',
+    'should request uri');
+
+  t.deepEqual(UrlFetchApp.fetch.firstCall.args[1], {
+    headers: {
+      'Authorization': 'AWS4-HMAC-SHA256 ' +
+        'Credential=AKIDEXAMPLE/20170412/eu-west-1/lambda/aws4_request, ' +
+        'SignedHeaders=content-type;host;x-amz-date, ' +
+        'Signature=54923843a90f47be0fd1331ba8c814bfb7fa5f082927395955cb8e29549c574a',
+      'Content-Type': 'application/json; charset=utf-8', 'X-Amz-Date': '20170412T175724Z'
+    },
+    method: 'POST',
+    muteHttpExceptions: true,
+    payload: '{"type":"productSlots/append","payload":{"code":"1555","slots":["M1010","M1011"]}}'
   }, 'should request with params');
 
   t.end();

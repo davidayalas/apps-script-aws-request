@@ -10,7 +10,7 @@ var UrlFetchApp = {
 
 /* eslint no-global-assign: 0 */
 getCurrentDate_ = function () {
-  return new Date('2015-08-30T12:36:00Z');
+  return new Date(exports.testCurrentDate); // 20170412T165045Z
 };
 
 exports.CryptoJs_ = CryptoJs_;
