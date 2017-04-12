@@ -1,7 +1,7 @@
 {
   "name": "apps-script-aws-request",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An interface to authenticate AWS api requests from within google scripts",
   "scripts": {
     "clean-dist": "rm -rf dist || : && mkdir dist",
