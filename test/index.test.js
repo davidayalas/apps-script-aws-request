@@ -29,7 +29,7 @@ test('getCanonicalDate functions', function (t) {
   t.equal(typeof getCanonicalFullDate, 'function', 'should have getCanonicalFullDate_ function');
   t.equal(typeof getCanonicalShortDate, 'function', 'should have getCanonicalShortDate_ function');
 
-  var date = new Date(2017, 2, 15, 12, 3, 15, 356);
+  var date = new Date('2017-03-15T07:03:15.356Z');
 
   t.equal(getCanonicalFullDate(date), '20170315T070315Z', 'should return full date');
   t.equal(getCanonicalShortDate(date), '20170315', 'should return short date');
