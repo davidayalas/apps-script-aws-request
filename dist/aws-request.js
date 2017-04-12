@@ -187,7 +187,7 @@ var getCurrentDate_ = function () {
      payload: (string|object),
    }} params **The AWS service request parameters**
    - `accessKey` - AWS access key
-   - `secretKey` - AWS secretKey key
+   - `secretKey` - AWS secret key key
    - `service` - the aws service to connect to (e.g. 'ec2', 'iam', 'codecommit')
    - `region` - (optional) the aws region your command will go to. Defaults to 'us-east-1'.
    - `path` - (optional) the path to api function (without query). Defaults to '/'.
