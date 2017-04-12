@@ -1,0 +1,47 @@
+{
+  "name": "apps-script-aws-request",
+  "private": true,
+  "version": "0.1.0",
+  "description": "An interface to authenticate AWS api requests from within google scripts",
+  "scripts": {
+    "clean-dist": "rm -rf dist || : && mkdir dist",
+    "clean-test": "rm -rf _temp-test || : && mkdir _temp-test",
+    "clean": "npm run clean-dist && npm run clean-test",
+    "lint": "eslint src && eslint test",
+    "concat-dist": "npm run clean-dist && cat vendor/crypto.js src/*.js > dist/aws-request.js",
+    "concat-test": "npm run clean-test && cat dist/aws-request.js test/test-helper.js > _temp-test/aws-request.js",
+    "build": "npm run concat-dist && npm run concat-test",
+    "test": "npm run lint && npm run build && nyc --silent tape test/*.test.js | tap-spec && nyc report --reporter=text --reporter=lcov",
+    "coverage-report": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wmakeev/apps-script-aws-request.git"
+  },
+  "keywords": [
+    "aws",
+    "google",
+    "google-apps-script",
+    "auth"
+  ],
+  "author": "Philip Smith (https://github.com/smithy545)",
+  "maintainers": [
+    {
+      "name": "Vitaliy V. Makeev",
+      "email": "w.makeev@gmail.com"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wmakeev/apps-script-aws-request/issues"
+  },
+  "homepage": "https://github.com/wmakeev/apps-script-aws-request",
+  "devDependencies": {
+    "coveralls": "^2.13.0",
+    "eslint": "^3.19.0",
+    "nyc": "^10.2.0",
+    "sinon": "^2.1.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  }
+}
