@@ -1,6 +1,6 @@
 # apps-script-aws-request
 
-[![version](https://img.shields.io/badge/code%20version-0.1.0-blue.svg?style=flat-square)]()
+[![version](https://img.shields.io/badge/version-0.1.1-blue.svg?style=flat-square)]()
 [![Travis](https://img.shields.io/travis/wmakeev/apps-script-aws-request.svg?maxAge=1800&style=flat-square)](https://travis-ci.org/wmakeev/apps-script-aws-request)
 [![Coveralls](https://img.shields.io/coveralls/wmakeev/apps-script-aws-request.svg?maxAge=1800&style=flat-square)](https://coveralls.io/github/wmakeev/apps-script-aws-request)
 [![bitHound DevDependencies](https://img.shields.io/bithound/devDependencies/github/wmakeev/apps-script-aws-request.svg?maxAge=1800&style=flat-square)](https://www.bithound.io/github/wmakeev/apps-script-aws-request/master/dependencies/npm)
@@ -89,10 +89,11 @@ Field name | Type  | Default value | Description |
 `service` | `string` | `N/A` (required) | AWS service (e.g. `ec2`, `iam`, `codecommit`) |
 `region` | `string` | `us-east-1` | AWS region |
 `path` | `string` | `/` | Path to api function (without query) |
-`query` | `Object` | `{}` | Query string parameters (e.g. `{ Action: "ListUsers" }`) |
+`query` | `object` | `{}` | Query string parameters (e.g. `{ Action: "ListUsers" }`) |
 `method` | `string` | `GET` | Http method (e.g. `GET`, `POST`) |
-`headers` | `Object` | `{}` | Http request headers `Host`, and `X-Amz-Date` are premade
+`headers` | `object` | `{}` | Http request headers `Host`, and `X-Amz-Date` are premade
    for you |
+`payload` | `string|object` | `""` | Payload to send (not string payload will be stringified)|
 
 Returns [HTTPResponse](https://developers.google.com/apps-script/reference/url-fetch/http-response)
 
