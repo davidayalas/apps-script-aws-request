@@ -1,0 +1,10 @@
+{
+  "test": [
+    "test/index.test.js"
+  ],
+  "ignore": [
+    "vendor/**",
+    "dist/**",
+    "test/test-helper.js"
+  ]
+}

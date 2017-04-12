@@ -1,0 +1,19 @@
+{
+  "extends": "eslint:recommended",
+  "rules": {
+    "max-len": ["error", 100],
+    "valid-jsdoc": "warn",
+    "semi": ["error", "always"],
+    "arrow-parens": 0,
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "no-shadow": ["error", {
+      "builtinGlobals": true,
+      "hoist": "all",
+      "allow": [
+        "cb", "done", "resolve", "reject"
+      ]
+    }],
+    "no-use-before-define": ["error", { "functions": true, "classes": true }],
+    "no-inner-declarations": [2, "both"]
+  }
+}
