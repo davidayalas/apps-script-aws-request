@@ -24,7 +24,10 @@
     "google-apps-script",
     "auth"
   ],
-  "author": "Philip Smith (https://github.com/smithy545)",
+  "author": {
+    "name": "Philip Smith",
+    "email": "pas147@case.edu"
+  },
   "maintainers": [
     {
       "name": "Vitaliy V. Makeev",
