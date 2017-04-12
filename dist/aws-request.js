@@ -135,10 +135,16 @@ function getCanonicalRequestHash_(method, path, headers, queryString, payloadStr
 
   var canonicalHeadersStr = canonicalHeaders.join('');
   var signedHeadersStr = signedHeaders.join(';');
+  var normalizedPath = path
+    .split(/\//g)
+    .map(function (part) {
+      return encodeURIComponent(part);
+    })
+    .join('/');
 
   var canonicalRequest = [
     method,
-    path.toLowerCase(),
+    normalizedPath,
     queryString,
     canonicalHeadersStr,
     signedHeadersStr,
