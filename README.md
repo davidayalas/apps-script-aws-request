@@ -91,9 +91,8 @@ Field name | Type  | Default value | Description |
 `path` | `string` | `/` | Path to api function (without query) |
 `query` | `object` | `{}` | Query string parameters (e.g. `{ Action: "ListUsers" }`) |
 `method` | `string` | `GET` | Http method (e.g. `GET`, `POST`) |
-`headers` | `object` | `{}` | Http request headers `Host`, and `X-Amz-Date` are premade
-   for you |
-`payload` | `string|object` | `""` | Payload to send (not string payload will be stringified)|
+`headers` | `object` | `{}` | Http request headers `Host`, and `X-Amz-Date` are premade for you |
+`payload` | `string` or `object` | `""` | Payload to send (object payload will be stringified)|
 
 Returns [HTTPResponse](https://developers.google.com/apps-script/reference/url-fetch/http-response)
 
