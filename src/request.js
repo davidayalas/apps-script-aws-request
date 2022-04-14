@@ -75,7 +75,7 @@ function request(params) {
     path = '/' + path;
   }
 
-  var payloadString = '';
+  var payloadString = payload;
   if (typeof payload !== 'string') {
     payloadString = JSON.stringify(payload);
   }
